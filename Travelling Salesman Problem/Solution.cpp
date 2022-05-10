@@ -20,6 +20,7 @@ Solution::Solution(int numberOfCities, int** adjacency, std::vector<int> cities)
 double Solution::fitness() const {
 	int totalDistance = 0;
 
+	//-1 because we i + 1
 	for (int i = 0; i < mNumberOfCities - 1l; i++) {
 		int from = mCities[i];
 		int to = mCities[i + 1];
@@ -46,6 +47,9 @@ std::string Solution::toString() const {
 	return stream.str();
 }
 
+//cant really do a single point cross over because we cant allow for repeated occurances of the same cities.
+//so we select a single crossover point for the first N number of cities, and then add the cities from the other set
+//if they dont already exist until the crossed set is complete.
 std::vector<Solution> Solution::singlePointCrossover(Solution other, double crossOverProbability) const {
 
 	bool cross = randomProbability(crossOverProbability);
