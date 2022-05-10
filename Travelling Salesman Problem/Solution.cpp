@@ -120,8 +120,8 @@ std::vector<Solution> Solution::singlePointCrossover(Solution other, double cros
 			}
 		}
 
-		Solution child1(mNumberOfCities, mAdjacency, cities1);
-		Solution child2(mNumberOfCities, mAdjacency, cities2);
+		Solution child1{ mNumberOfCities, mAdjacency, cities1 };
+		Solution child2{ mNumberOfCities, mAdjacency, cities2 };
 
 		std::cout << "Children = " << child1.toString() << " & " << child2.toString() << std::endl;
 
@@ -138,6 +138,9 @@ void Solution::mutate(double mutationProbability) {
 		bool mutate = randomProbability(mutationProbability);
 
 		if (mutate) {
+
+			std::cout << std::endl << "Mutated solution = From: " << toString();
+
 			int other = rand() % mNumberOfCities;
 
 			while (other == i) {
@@ -148,7 +151,7 @@ void Solution::mutate(double mutationProbability) {
 			mCities[i] = mCities[other];
 			mCities[other] = temp;
 
-			std::cout << std::endl << "Mutated solution = " << this->toString() << std::endl;
+			std::cout << " to: " << toString() << std::endl;
 		}
 	}
 }

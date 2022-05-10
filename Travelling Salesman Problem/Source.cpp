@@ -59,8 +59,8 @@ int main(void) {
 
 	inFile.close();
 
-	int populationSize = 20;
-	int generations = 20;
+	int populationSize = 10;
+	int generations = 10;
 	int tournamentGroupSize = 3;
 	double crossoverProbability = 0.7;
 	double mutationProbability = 0.01;
