@@ -134,5 +134,21 @@ std::vector<Solution> Solution::singlePointCrossover(Solution other, double cros
 
 }
 void Solution::mutate(double mutationProbability) {
+	for (int i = 0; i < mNumberOfCities; i++) {
+		bool mutate = randomProbability(mutationProbability);
 
+		if (mutate) {
+			int other = rand() % mNumberOfCities;
+
+			while (other == i) {
+				other = rand() % mNumberOfCities;
+			}
+
+			int temp = mCities[i];
+			mCities[i] = mCities[other];
+			mCities[other] = temp;
+
+			std::cout << std::endl << "Mutated solution = " << this->toString() << std::endl;
+		}
+	}
 }
